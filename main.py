@@ -7,7 +7,7 @@ def frange(start, stop=None, step=None):
     stop += step
     c = 0
     while True:
-        temp = start + float(c) * step
+        temp = start + step * c
         if 0 < step and abs(abs(temp - stop) - step) < step:
             break
         elif 0 > step > abs(abs(temp - stop) - step):
@@ -58,7 +58,7 @@ def runge_kuttas(m: float, p: float, k: float, x_0: float, y_0: float, dy_0: flo
         k4 = h * (result[-1][2] + dk3)
         dk4 = h * ddy(m, p, k, result[-1][2] + dk3, result[-1][1] + k3)
 
-        result.append((result[-1][0] + h, result[-1][1] + nxt(k1, k2, k3, k4), result[-1][2] + nxt(dk1, dk2, dk3, dk4)))
+        result.append((round(iter_x + h, len(str(h)) - 1), result[-1][1] + nxt(k1, k2, k3, k4), result[-1][2] + nxt(dk1, dk2, dk3, dk4)))
 
     return result
     pass
