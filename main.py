@@ -69,6 +69,7 @@ def runge_kuttas(m: float, p: float, k: float, x_0: float, y_0: float, dy_0: flo
 m, p, k, y_0, dy_0, h, x_n = read_data_from_standard_input()
 x_0 = 0
 res_x, res_y, res_dy = runge_kuttas(m, p, k, x_0, y_0, dy_0, h, x_n)
+print(np.array(list(zip(res_x, res_y, res_dy))))
 x = np.array(res_x)
 y = np.array(res_y)
 plt.plot(res_x, res_y, label='y')
